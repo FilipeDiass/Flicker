@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'WFVisualSans';
+  src: url('../fonts/WFVisualSans.woff2');
+}
+
+@font-face {
+  font-family: 'SuperGroteskPro';
+  src: url('../fonts/SuperGroteskPro.woff2');
+}
