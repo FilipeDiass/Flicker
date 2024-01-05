@@ -2,22 +2,17 @@
   <header class="z-50 flex h-16 w-full items-center justify-center bg-slate-950 p-3">
     <HeaderBox v-slot="{ active }">
       <NavBar :menu="active">
-        <ItemMenu>
-          <!-- <RouterLink to="/"></RouterLink> -->
-          <HomeIcon class="size-7" />Home
-        </ItemMenu>
-        <ItemMenu>
-          <!-- <RouterLink to="/"></RouterLink> -->
-          <WindowIcon class="size-7" />About The Project
-        </ItemMenu>
-        <ItemMenu>
-          <!-- <RouterLink to="/"></RouterLink> -->
-          <ContactIcon class="size-7" />Contact
-        </ItemMenu>
+        <ItemMenu to="/"> <HomeIcon class="size-7 md:hidden" /> Home </ItemMenu>
+        <ItemMenu> <WindowIcon class="size-7 md:hidden" /> About The Project </ItemMenu>
+        <ItemMenu> <ContactIcon class="size-7 md:hidden" /> Contact </ItemMenu>
       </NavBar>
     </HeaderBox>
   </header>
-  <!-- <RouterView /> -->
+
+  <main class="m-auto w-full max-w-7xl">
+    <router-view></router-view>
+  </main>
+
   <!-- <footer></footer> -->
 </template>
 
