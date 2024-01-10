@@ -1,15 +1,15 @@
 <template>
-  <header class="z-50 flex h-16 w-full items-center justify-center bg-slate-950 p-3">
-    <HeaderBox v-slot="{ active }">
-      <NavBar :menu="active">
+  <header class="fixed top-0 z-50 flex h-16 w-full items-center justify-center bg-slate-950 p-3">
+    <HeaderBox>
+      <NavBar>
         <ItemMenu to="/"> <HomeIcon class="size-7 md:hidden" /> Home </ItemMenu>
-        <ItemMenu> <WindowIcon class="size-7 md:hidden" /> About The Project </ItemMenu>
+        <ItemMenu to="/about"> <WindowIcon class="size-7 md:hidden" /> About The Project </ItemMenu>
         <ItemMenu> <ContactIcon class="size-7 md:hidden" /> Contact </ItemMenu>
       </NavBar>
     </HeaderBox>
   </header>
 
-  <main class="m-auto w-full max-w-7xl">
+  <main class="m-auto mt-16 w-full max-w-7xl">
     <router-view></router-view>
   </main>
 

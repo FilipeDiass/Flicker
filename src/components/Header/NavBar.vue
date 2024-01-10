@@ -1,6 +1,6 @@
 <template>
   <nav
-    :class="{ navAnimation: props.menu.burguer }"
+    :class="{ navAnimation: menu.burguer }"
     class="absolute left-0 top-16 h-0 w-full overflow-hidden bg-slate-950 text-white duration-300 md:static md:flex md:h-7 md:w-fit md:items-center"
   >
     <ul
@@ -12,12 +12,9 @@
 </template>
 
 <script setup>
-const props = defineProps({
-  menu: {
-    type: Object,
-    default: () => ({})
-  }
-})
+import { useToggleStore } from '@/stores/useToggle'
+
+const { menu } = useToggleStore()
 </script>
 
 <style scoped>

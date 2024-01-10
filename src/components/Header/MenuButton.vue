@@ -1,22 +1,19 @@
 <template>
   <button
-    :class="{ menuAnimation: props.active.burguer }"
+    :class="{ menuAnimation: menu.burguer }"
     class="relative flex h-7 w-7 items-center before:absolute before:left-0 before:top-[3px] before:h-1 before:w-full before:rounded before:bg-white before:duration-300 after:absolute after:bottom-0.5 after:left-0 after:h-1 after:w-full after:rounded after:bg-white after:duration-300"
   >
     <span
-      :class="{ disappearLine: props.active.burguer }"
+      :class="{ disappearLine: menu.burguer }"
       class="h-1 w-full rounded bg-white duration-200"
     ></span>
   </button>
 </template>
 
 <script setup>
-const props = defineProps({
-  active: {
-    type: Object,
-    default: () => ({ burguer: false })
-  }
-})
+import { useToggleStore } from '@/stores/useToggle'
+
+const { menu } = useToggleStore()
 </script>
 
 <style scoped>

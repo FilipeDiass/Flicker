@@ -1,7 +1,16 @@
 <template>
-  <section class="h-80 w-full bg-white/50"></section>
+  <Suspense>
+    <template #default>
+      <TrendBanner />
+    </template>
+    <template #fallback>
+      <LoadingTrend />
+    </template>
+  </Suspense>
 </template>
 
-<script setup></script>
+<script setup>
+import { TrendBanner, LoadingTrend } from '@/components/TrendBanner'
+</script>
 
 <style></style>

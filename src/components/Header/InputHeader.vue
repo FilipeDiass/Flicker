@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="{ inputAnimation: props.active.search }"
+    :class="{ inputAnimation: menu.search }"
     class="absolute left-0 top-16 flex h-0 w-full items-center overflow-hidden bg-slate-950 px-2.5 duration-200 lg:static lg:h-9 lg:w-[400px] lg:p-0"
   >
     <div
@@ -20,21 +20,17 @@
 </template>
 
 <script setup>
+import { useToggleStore } from '@/stores/useToggle'
 import { SearchIcon } from '@/assets/icons'
 import { ref, watch } from 'vue'
 
-const props = defineProps({
-  active: {
-    type: Object,
-    default: () => ({ search: false })
-  }
-})
+const { menu } = useToggleStore()
 
 const input = ref(null)
 watch(
-  () => props.active.search,
+  () => menu.search,
   () => {
-    if (props.active.search) input.value.focus()
+    if (menu.search) input.value.focus()
   }
 )
 </script>

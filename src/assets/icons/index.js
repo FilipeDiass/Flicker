@@ -3,5 +3,8 @@ export { default as SearchIcon } from './SearchIcon.vue'
 export { default as HomeIcon } from './HomeIcon.vue'
 export { default as WindowIcon } from './WindowIcon.vue'
 export { default as ContactIcon } from './ContactIcon.vue'
+export { default as InfoIcon } from './InfoIcon.vue'
+export { default as PlayIcon } from './PlayIcon.vue'
+export { default as XIcon } from './XIcon.vue'
 
 // export { default as  } from './.vue'
