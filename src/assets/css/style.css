@@ -11,3 +11,9 @@
   font-family: 'SuperGroteskPro';
   src: url('../fonts/SuperGroteskPro.woff2');
 }
+
+@layer base {
+  .border-text-1 {
+    -webkit-text-stroke: 1px white;
+  }
+}
