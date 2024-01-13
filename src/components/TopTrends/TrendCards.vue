@@ -6,7 +6,6 @@
       initial-slide="1"
       autoplay-delay="3000"
       effect="coverflow"
-      pagination="true"
       grab-cursor="true"
       centered-slides="true"
       slides-per-view="auto"
@@ -19,7 +18,7 @@
       <swiper-slide
         v-for="(el, i) in arrayTrends"
         :key="el.id"
-        class="h-40 w-52 md:h-60 md:w-80 lg:h-56 lg:w-72"
+        class="h-40 w-52 cursor-pointer md:h-60 md:w-80 lg:h-56 lg:w-72"
       >
         <div class="flex size-full overflow-hidden rounded bg-slate-950 shadow-lg shadow-black">
           <div
