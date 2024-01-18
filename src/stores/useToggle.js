@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { ref, reactive } from 'vue'
+import { reactive } from 'vue'
 
 export const useToggleStore = defineStore('toggle', () => {
   const menu = reactive({})
@@ -12,12 +12,5 @@ export const useToggleStore = defineStore('toggle', () => {
     })
   }
 
-  // Visibility trailer
-  const trailer = ref(false)
-
-  function toggleTrailer() {
-    trailer.value = !trailer.value
-  }
-
-  return { menu, toggleMenu, trailer, toggleTrailer }
+  return { menu, toggleMenu }
 })

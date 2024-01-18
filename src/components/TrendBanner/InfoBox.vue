@@ -6,14 +6,11 @@
       <slot></slot>
     </h1>
     <div class="flex h-10 w-full items-center gap-2.5">
-      <InfoButton class="md:w-20" />
-      <TrailerButton />
+      <slot name="buttons" />
     </div>
   </div>
 </template>
 
-<script setup>
-import { InfoButton, TrailerButton } from '@/components/app'
-</script>
+<script setup></script>
 
 <style></style>

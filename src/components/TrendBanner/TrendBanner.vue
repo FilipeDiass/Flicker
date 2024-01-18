@@ -3,21 +3,28 @@
     <ImageBanner :media-info="trendInfo" />
     <InfoBox>
       {{ trendInfo.title }}
+      <template #buttons>
+        <InfoButton />
+        <TrailerButton @click="toggleTrailer" />
+      </template>
     </InfoBox>
   </section>
   <Suspense>
-    <VideoTrailer v-if="storeTrailer.trailer" :media-info="trendInfo" />
+    <VideoTrailer v-if="activeTrailer" :toggle="toggleTrailer" :media-info="trendInfo" />
   </Suspense>
 </template>
 
 <script setup>
 import { ImageBanner, InfoBox } from '@/components/TrendBanner'
 import { useTrendsMediaStore } from '@/stores/useTrendsMedia'
-import { useToggleStore } from '@/stores/useToggle'
+import { InfoButton, TrailerButton } from '@/components/app'
 import { VideoTrailer } from '@/components/app'
-import { reactive } from 'vue'
+import { ref, reactive } from 'vue'
 
-const storeTrailer = useToggleStore()
+const activeTrailer = ref(false)
+function toggleTrailer() {
+  activeTrailer.value = !activeTrailer.value
+}
 
 const store = useTrendsMediaStore()
 if (!store.objectTrends) await store.trendsMedia()

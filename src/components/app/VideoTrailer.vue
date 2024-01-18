@@ -1,12 +1,13 @@
 <template>
   <div
     class="fixed left-0 top-0 z-50 flex h-dvh w-dvw flex-col items-center justify-center overflow-hidden font-primary"
-    @click="toggleTrailer"
+    @click="props.toggle"
   >
     <div
       class="flex h-full w-full flex-col items-center justify-center overflow-hidden bg-black/80 duration-150"
     >
       <iframe
+        v-if="key"
         class="mediaQuery rounded-lg"
         :src="`https://www.youtube.com/embed/${key}?autoplay=1&loop=1&modestbranding=1&showinfo=0&&enablejsapi=1&widgetid=3`"
         title="YouTube video player"
@@ -15,29 +16,40 @@
         allowfullscreen
         allowsInlineMediaPlayback="True"
       ></iframe>
+      <div v-else class="mediaQuery flex items-center justify-center rounded-lg">
+        <p class="font-primary text-2xl text-white">
+          Unfortunately this media does not have a trailer
+        </p>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
 import { useTrailerKeyStore } from '@/stores/useTrailerKey'
-import { useToggleStore } from '@/stores/useToggle'
 
 const props = defineProps({
   mediaInfo: {
     type: Object,
     default: () => ({})
+  },
+  toggle: {
+    type: Function,
+    default() {
+      return 'Default function'
+    }
   }
 })
 const { id, mediaType } = props.mediaInfo
 
 const store = useTrailerKeyStore()
-if (!store.objectTrailer) await store.trailerKey(id, mediaType)
+await store.trailerKey(id, mediaType)
 const trailerArray = store.objectTrailer.results
-
-const { key } = trailerArray.find((el) => el.type === 'Trailer')
-
-const { toggleTrailer } = useToggleStore()
+console.log(trailerArray)
+let key = undefined
+if (trailerArray.length > 0) {
+  ;({ key } = trailerArray.find((el) => el.type === 'Trailer' || 'Clip'))
+}
 </script>
 
 <style scoped>
