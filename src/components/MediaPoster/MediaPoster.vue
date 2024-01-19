@@ -48,19 +48,22 @@ const props = defineProps({
 const arrayMedia = ref(null)
 
 const store = useTopRatedStore()
-if (props.media === 'tv') {
-  arrayMedia.value = await store.topRatedSerie(1)
-}
-if (props.media === 'movie') {
-  arrayMedia.value = await store.topRatedMovie(1)
-}
+
+const keyTv = store.series.length === 0
+const keyMovie = store.movies.length === 0
+
+if (props.media === 'tv' && keyTv) await store.topRatedSerie(1)
+if (props.media === 'movie' && keyMovie) await store.topRatedMovie(1)
+
+arrayMedia.value = props.media === 'tv' ? store.series : store.movies
 
 const swiper = ref(null)
-const nextPage = ref(1)
+const page = store.nextPage
 async function onReachEnd() {
-  nextPage.value++
-  if (props.media === 'tv') await store.topRatedSerie(nextPage.value)
-  if (props.media === 'movie') await store.topRatedMovie(nextPage.value)
+  props.media === 'tv' ? page.tv++ : page.movie++
+
+  if (props.media === 'tv') await store.topRatedSerie(page.tv)
+  if (props.media === 'movie') await store.topRatedMovie(page.movie)
 
   swiper.value.swiper.update()
 }

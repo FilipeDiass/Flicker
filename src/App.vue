@@ -13,12 +13,13 @@
     <router-view></router-view>
   </main>
 
-  <!-- <footer></footer> -->
+  <FooterBox />
 </template>
 
 <script setup>
 import { HomeIcon, WindowIcon, ContactIcon } from './assets/icons'
 import { HeaderBox, NavBar, ItemMenu } from './components/Header'
+import { FooterBox } from '@/components/Footer'
 </script>
 
 <style></style>

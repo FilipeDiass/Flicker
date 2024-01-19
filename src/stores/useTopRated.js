@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { options } from '@/assets/scripts/optionsApi'
-import { ref } from 'vue'
+import { reactive, ref } from 'vue'
 
 export const useTopRatedStore = defineStore('SeriesStore', () => {
   const series = ref([])
@@ -14,7 +14,6 @@ export const useTopRatedStore = defineStore('SeriesStore', () => {
 
       const result = await requestApi.json()
       result.results.forEach((el) => series.value.push(el))
-      return series.value
     } catch (error) {
       console.error(error)
     }
@@ -31,11 +30,15 @@ export const useTopRatedStore = defineStore('SeriesStore', () => {
 
       const result = await requestApi.json()
       result.results.forEach((el) => movies.value.push(el))
-      return movies.value
     } catch (error) {
       console.error(error)
     }
   }
 
-  return { topRatedSerie, topRatedMovie }
+  const nextPage = reactive({
+    tv: 1,
+    movie: 1
+  })
+
+  return { topRatedSerie, series, topRatedMovie, movies, nextPage }
 })

@@ -1,5 +1,5 @@
 <template>
-  <section class="my-5 flex h-fit w-full flex-col gap-5 overflow-hidden p-2.5">
+  <section class="my-5 flex h-fit w-full flex-col gap-5 overflow-hidden p-2.5 xl:px-0">
     <div class="flex h-fit w-full flex-wrap items-center justify-between gap-5">
       <h1 class="font-primary text-2xl text-white lg:text-3xl">
         <slot />
@@ -18,15 +18,15 @@
         @swiperreachend="onReachEnd"
       >
         <swiper-slide
-          v-for="el in arraySeries"
+          v-for="el in popularMedia"
           :key="el.id"
           class="flex items-center justify-center"
         >
-          <picture class="h-fit w-36 flex-shrink-0 cursor-pointer overflow-hidden rounded lg:w-40">
+          <picture class="h-60 w-fit flex-shrink-0 cursor-pointer overflow-hidden rounded lg:w-40">
             <img
-              class="size-full object-cover"
+              class="size-full object-cover text-white"
               :src="`https://image.tmdb.org/t/p/original/${el.poster_path}`"
-              :alt="el.title"
+              :alt="el.title || el.name"
             />
           </picture>
         </swiper-slide>
@@ -39,20 +39,34 @@
 import { usePopularMediaStore } from '@/stores/usePopularMedia'
 import { ref, reactive } from 'vue'
 
-const store = usePopularMediaStore()
-if (!store.arraySeries) await store.popularSeries(1)
+const props = defineProps({
+  media: {
+    type: String,
+    default: ''
+  }
+})
 
-const arraySeries = store.arraySeries
-console.log(arraySeries)
+const popularMedia = ref(null)
+
+const store = usePopularMediaStore()
+
+const keyTv = store.series.length === 0
+const keyMovie = store.movies.length === 0
+
+if (props.media === 'tv' && keyTv) await store.popularSeries(1)
+if (props.media === 'movie' && keyMovie) await store.popularMovies(1)
+
+popularMedia.value = props.media === 'tv' ? store.series : store.movies
 
 const swiper = ref(null)
-const page = ref(1)
-
+const page = store.nextPage
 async function onReachEnd() {
-  page.value++
-  await store.popularSeries(page.value)
+  props.media === 'tv' ? page.tv++ : page.movie++
 
-  swiper.value.swiper.updateSlides()
+  if (props.media === 'tv') await store.popularSeries(page.tv)
+  if (props.media === 'movie') await store.popularMovies(page.movie)
+
+  swiper.value.swiper.update()
 }
 
 const swiperParams = reactive({
@@ -67,25 +81,3 @@ const swiperParams = reactive({
   }
 })
 </script>
-<!-- slides-per-view="3" space-between="10"  -->
-<!-- const props = defineProps({
-//   mediaType: {
-//     type: Object,
-//     default: () => ({})
-//   }
-// })
-// const { media, page } = props.mediaType
-
-// const store = usePopularMediaStore()
-// if (!store.popularSeries) await store.popularMedia(media, page)
-// const arraySeries = ref(store.popularSeries.results)
-
-// const swiper = ref(null)
-// const numPages = ref(page)
-// async function onReachEnd() {
-//   numPages.value++
-//   await store.popularMedia(media, numPages.value)
-//   arraySeries.value = arraySeries.value.concat(store.popularSeries.results)
-
-//   swiper.value.swiper.updateSlides()
-// } -->
