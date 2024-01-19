@@ -1,5 +1,5 @@
 <template>
-  <section class="my-5 flex h-fit w-full flex-col gap-5 overflow-hidden p-2.5 xl:px-0">
+  <section class="my-5 flex h-fit w-full flex-col gap-5 overflow-hidden p-2.5 xl:p-0">
     <div class="flex h-fit w-full flex-wrap items-center justify-between gap-5">
       <h1 class="font-primary text-2xl text-white lg:text-3xl">
         <slot />
@@ -22,9 +22,9 @@
           :key="el.id"
           class="flex items-center justify-center"
         >
-          <picture class="h-60 w-fit flex-shrink-0 cursor-pointer overflow-hidden rounded lg:w-40">
+          <picture class="h-48 w-32 flex-shrink-0 cursor-pointer overflow-hidden lg:h-60 lg:w-40">
             <img
-              class="size-full object-cover text-white"
+              class="size-full rounded object-cover text-white"
               :src="`https://image.tmdb.org/t/p/original/${el.poster_path}`"
               :alt="el.title || el.name"
             />
@@ -71,6 +71,7 @@ async function onReachEnd() {
 
 const swiperParams = reactive({
   slidesPerView: 'auto',
+  grabCursor: true,
   breakpoints: {
     320: { slidesPerView: 2 },
     470: { slidesPerView: 3 },
