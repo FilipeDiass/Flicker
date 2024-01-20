@@ -24,7 +24,7 @@
         >
           <picture class="h-48 w-32 flex-shrink-0 cursor-pointer overflow-hidden lg:h-60 lg:w-40">
             <img
-              class="size-full rounded object-cover text-white"
+              class="size-full rounded bg-slate-950 object-cover text-white"
               :src="`https://image.tmdb.org/t/p/original/${el.poster_path}`"
               :alt="el.title || el.name"
             />
@@ -72,6 +72,11 @@ async function onReachEnd() {
 const swiperParams = reactive({
   slidesPerView: 'auto',
   grabCursor: true,
+  freeMode: {
+    enable: true,
+    sticky: true,
+    minimumVelocity: 1.3
+  },
   breakpoints: {
     320: { slidesPerView: 2 },
     470: { slidesPerView: 3 },

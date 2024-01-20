@@ -1,20 +1,6 @@
 <template>
   <div class="flex h-full w-full items-center justify-center overflow-hidden lg:w-9/12">
-    <swiper-container
-      class="flex h-fit w-full items-center justify-center"
-      loop="true"
-      initial-slide="1"
-      autoplay-delay="3000"
-      effect="coverflow"
-      grab-cursor="true"
-      centered-slides="true"
-      slides-per-view="auto"
-      coverflow-effect-rotate="50"
-      coverflow-effect-stretch="-30"
-      coverflow-effect-depth="150"
-      coverflow-effect-modifier="1"
-      coverflow-effect-slide-shadows="true"
-    >
+    <swiper-container class="flex h-fit w-full items-center justify-center" v-bind="swiperParams">
       <swiper-slide
         v-for="(el, i) in arrayTrends"
         :key="el.id"
@@ -43,11 +29,47 @@
 
 <script setup>
 import { useTrendsMediaStore } from '@/stores/useTrendsMedia'
+import { reactive } from 'vue'
 
 const store = useTrendsMediaStore()
 if (!store.objectTrends) await store.trendsMedia()
 
 const arrayTrends = store.objectTrends.results.slice(0, 10)
+
+const swiperParams = reactive({
+  loop: true,
+  initialSlide: 1,
+  autoplay: {
+    delay: 3000
+  },
+  effect: 'coverflow',
+  centeredSlides: true,
+  coverflowEffect: {
+    rotate: 0,
+    stretch: 20,
+    depth: 180,
+    modifier: 2
+  },
+
+  slidesPerView: 'auto',
+  grabCursor: true,
+  breakpoints: {
+    450: {
+      coverflowEffect: {
+        rotate: 50,
+        stretch: -30,
+        depth: 150,
+        modifier: 1
+      }
+    }
+  }
+  //   470: { slidesPerView: 3 },
+  //   630: { slidesPerView: 4 },
+  //   768: { slidesPerView: 5 },
+  //   945: { slidesPerView: 6, spaceBetween: 5 },
+  //   1280: { slidesPerView: 7, spaceBetween: 20 }
+  // }
+})
 </script>
 <!-- 50
 150 -->

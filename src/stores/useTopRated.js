@@ -13,7 +13,12 @@ export const useTopRatedStore = defineStore('SeriesStore', () => {
       if (!requestApi.ok) throw 'Unable to request API'
 
       const result = await requestApi.json()
-      result.results.forEach((el) => series.value.push(el))
+      result.results.forEach((el) => {
+        const isIdExists = series.value.some((obj) => obj.id === el.id)
+        if (!isIdExists) {
+          series.value.push(el)
+        }
+      })
     } catch (error) {
       console.error(error)
     }
@@ -29,7 +34,12 @@ export const useTopRatedStore = defineStore('SeriesStore', () => {
       if (!requestApi.ok) throw 'Unable to request API'
 
       const result = await requestApi.json()
-      result.results.forEach((el) => movies.value.push(el))
+      result.results.forEach((el) => {
+        const isIdExists = movies.value.some((obj) => obj.id === el.id)
+        if (!isIdExists) {
+          movies.value.push(el)
+        }
+      })
     } catch (error) {
       console.error(error)
     }
