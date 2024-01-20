@@ -75,7 +75,8 @@ const swiperParams = reactive({
   freeMode: {
     enable: true,
     sticky: true,
-    minimumVelocity: 1.3
+    minimumVelocity: 0.02,
+    momentum: true
   },
   breakpoints: {
     320: { slidesPerView: 2 },
