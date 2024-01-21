@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full w-48">
+  <div class="h-full w-48 max-[425px]:h-72">
     <img
       class="size-full rounded object-cover"
       :src="`https://image.tmdb.org/t/p/original/${poster}`"

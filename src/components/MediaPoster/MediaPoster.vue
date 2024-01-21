@@ -6,14 +6,16 @@
       v-bind="swiperParams"
       @swiperreachend="onReachEnd"
     >
-      <swiper-slide v-for="el in arrayMedia" :key="el.id" class="max-w-[830px]">
+      <swiper-slide v-for="el in arrayMedia" :key="el.id" class="max-w-[830px] max-[425px]:w-fit">
         <div
-          class="flex size-full flex-col items-center gap-2.5 rounded bg-slate-950 p-2.5 shadow-md shadow-black min-[425px]:flex-row"
+          class="flex size-full flex-col items-center gap-2.5 rounded bg-slate-950 p-2.5 shadow-md shadow-black max-[425px]:bg-transparent max-[425px]:p-0 max-[425px]:shadow-none min-[425px]:flex-row"
         >
           <ImagePoster :poster="{ poster: el.poster_path }" />
-          <div class="flex h-full w-full flex-col items-center justify-center gap-2.5 text-white">
+          <div
+            class="flex h-full w-full flex-col items-center justify-center gap-2.5 text-white max-[425px]:items-start"
+          >
             <InfoPoster :info="el" />
-            <div class="mt-2 flex items-end justify-center gap-10">
+            <div class="mt-2 flex w-full items-center justify-center gap-10 max-[425px]:gap-4">
               <InfoButton />
               <TrailerButton @click="toggleTrailer(el.id)" />
             </div>
