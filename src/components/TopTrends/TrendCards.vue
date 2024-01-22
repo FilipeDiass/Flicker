@@ -6,22 +6,24 @@
         :key="el.id"
         class="h-40 w-52 cursor-pointer md:h-60 md:w-80 lg:h-56 lg:w-72"
       >
-        <div class="flex size-full overflow-hidden rounded bg-slate-950 shadow-lg shadow-black">
-          <div
-            class="border-text-1 z-30 flex h-full w-[45%] items-center justify-center font-primary text-[5rem] text-transparent md:text-8xl lg:text-[7rem]"
-          >
-            {{ i + 1 }}
+        <router-link to="/info-media">
+          <div class="flex size-full overflow-hidden rounded bg-slate-950 shadow-lg shadow-black">
+            <div
+              class="border-text-1 z-30 flex h-full w-[45%] items-center justify-center font-primary text-[5rem] text-transparent md:text-8xl lg:text-[7rem]"
+            >
+              {{ i + 1 }}
+            </div>
+            <div
+              class="relative h-full w-[55%] before:absolute before:left-0 before:h-full before:w-2 before:bg-gradient-to-r before:from-slate-950"
+            >
+              <img
+                :src="`https://image.tmdb.org/t/p/original${el.poster_path}`"
+                :alt="el.title || el.name"
+                class="size-full object-cover text-white"
+              />
+            </div>
           </div>
-          <div
-            class="relative h-full w-[55%] before:absolute before:left-0 before:h-full before:w-2 before:bg-gradient-to-r before:from-slate-950"
-          >
-            <img
-              :src="`https://image.tmdb.org/t/p/original${el.poster_path}`"
-              :alt="el.title || el.name"
-              class="size-full object-cover text-white"
-            />
-          </div>
-        </div>
+        </router-link>
       </swiper-slide>
     </swiper-container>
   </div>

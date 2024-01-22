@@ -20,15 +20,17 @@
         <swiper-slide
           v-for="el in popularMedia"
           :key="el.id"
-          class="flex items-center justify-center"
+          class="flex max-w-32 items-center justify-center lg:max-w-40"
         >
-          <picture class="h-48 w-32 flex-shrink-0 cursor-pointer overflow-hidden lg:h-60 lg:w-40">
-            <img
-              class="size-full rounded bg-slate-950 object-cover text-white"
-              :src="`https://image.tmdb.org/t/p/original/${el.poster_path}`"
-              :alt="el.title || el.name"
-            />
-          </picture>
+          <router-link to="/info-media" class="h-48 w-32 lg:h-60 lg:w-40">
+            <picture class="h-48 w-32 flex-shrink-0 cursor-pointer overflow-hidden lg:h-60 lg:w-40">
+              <img
+                class="size-full rounded bg-slate-950 object-cover text-white"
+                :src="`https://image.tmdb.org/t/p/original/${el.poster_path}`"
+                :alt="el.title || el.name"
+              />
+            </picture>
+          </router-link>
         </swiper-slide>
       </swiper-container>
     </div>
@@ -71,20 +73,13 @@ async function onReachEnd() {
 
 const swiperParams = reactive({
   slidesPerView: 'auto',
+  spaceBetween: 20,
   grabCursor: true,
   freeMode: {
     enable: true,
     sticky: true,
     minimumVelocity: 0.02,
     momentum: true
-  },
-  breakpoints: {
-    320: { slidesPerView: 2 },
-    470: { slidesPerView: 3 },
-    630: { slidesPerView: 4 },
-    768: { slidesPerView: 5 },
-    945: { slidesPerView: 6, spaceBetween: 5 },
-    1280: { slidesPerView: 7, spaceBetween: 20 }
   }
 })
 </script>

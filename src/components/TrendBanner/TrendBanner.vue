@@ -4,7 +4,9 @@
     <InfoBox>
       {{ trendInfo.title }}
       <template #buttons>
-        <InfoButton />
+        <router-link to="/info-media">
+          <InfoButton />
+        </router-link>
         <TrailerButton @click="toggleTrailer" />
       </template>
     </InfoBox>

@@ -1,7 +1,7 @@
 <template>
   <div
     :class="{ inputAnimation: menu.search }"
-    class="absolute left-0 top-16 flex h-0 w-full items-center overflow-hidden bg-slate-950 px-2.5 duration-200 lg:static lg:h-9 lg:w-[400px] lg:p-0"
+    class="absolute left-0 top-16 flex h-0 w-full items-center overflow-hidden bg-slate-950 px-2.5 duration-200 lg:static lg:h-9 lg:w-[400px] lg:bg-transparent lg:p-0"
   >
     <div
       class="flex h-10 w-full items-center overflow-hidden rounded text-lg lg:h-full lg:rounded-full lg:border-2 lg:border-slate-900 lg:px-1"

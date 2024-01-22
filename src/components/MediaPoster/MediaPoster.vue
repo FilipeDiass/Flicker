@@ -16,7 +16,9 @@
           >
             <InfoPoster :info="el" />
             <div class="mt-2 flex w-full items-center justify-center gap-10 max-[425px]:gap-4">
-              <InfoButton />
+              <router-link to="/info-media">
+                <InfoButton />
+              </router-link>
               <TrailerButton @click="toggleTrailer(el.id)" />
             </div>
           </div>
