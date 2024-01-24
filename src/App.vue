@@ -9,9 +9,7 @@
     </HeaderBox>
   </header>
 
-  <div class="m-auto mt-16 w-full max-w-7xl">
-    <router-view></router-view>
-  </div>
+  <router-view />
 
   <FooterBox />
 </template>

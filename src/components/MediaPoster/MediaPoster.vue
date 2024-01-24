@@ -17,7 +17,7 @@
             <InfoPoster :info="el" />
             <div class="mt-2 flex w-full items-center justify-center gap-10 max-[425px]:gap-4">
               <router-link to="/info-media">
-                <InfoButton />
+                <InfoButton @click="mediaDetails(props.media, el.id)" />
               </router-link>
               <TrailerButton @click="toggleTrailer(el.id)" />
             </div>
@@ -39,6 +39,7 @@
 import { ImagePoster, InfoPoster } from '@/components/MediaPoster'
 import { InfoButton, TrailerButton } from '@/components/app'
 import { useTopRatedStore } from '@/stores/useTopRated'
+import { useMediaDetailsStore } from '@/stores/useMediaDetails'
 import { VideoTrailer } from '@/components/app'
 import { ref, reactive } from 'vue'
 
@@ -84,4 +85,6 @@ const swiperParams = reactive({
   spaceBetween: 20,
   grabCursor: true
 })
+
+const { mediaDetails } = useMediaDetailsStore()
 </script>

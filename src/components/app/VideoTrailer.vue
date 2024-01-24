@@ -45,7 +45,7 @@ const { id, mediaType } = props.mediaInfo
 const store = useTrailerKeyStore()
 await store.trailerKey(id, mediaType)
 const trailerArray = store.objectTrailer.results
-console.log(trailerArray)
+
 let key = undefined
 if (trailerArray.length > 0) {
   ;({ key } = trailerArray.find((el) => el.type === 'Trailer' || 'Clip'))

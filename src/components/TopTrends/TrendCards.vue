@@ -7,7 +7,10 @@
         class="h-40 w-52 cursor-pointer md:h-60 md:w-80 lg:h-56 lg:w-72"
       >
         <router-link to="/info-media">
-          <div class="flex size-full overflow-hidden rounded bg-slate-950 shadow-lg shadow-black">
+          <div
+            class="flex size-full overflow-hidden rounded bg-slate-950 shadow-lg shadow-black"
+            @click="mediaDetails(el.media_type, el.id)"
+          >
             <div
               class="border-text-1 z-30 flex h-full w-[45%] items-center justify-center font-primary text-[5rem] text-transparent md:text-8xl lg:text-[7rem]"
             >
@@ -31,6 +34,7 @@
 
 <script setup>
 import { useTrendsMediaStore } from '@/stores/useTrendsMedia'
+import { useMediaDetailsStore } from '@/stores/useMediaDetails'
 import { reactive } from 'vue'
 
 const store = useTrendsMediaStore()
@@ -52,7 +56,6 @@ const swiperParams = reactive({
     depth: 180,
     modifier: 2
   },
-
   slidesPerView: 'auto',
   grabCursor: true,
   breakpoints: {
@@ -65,13 +68,9 @@ const swiperParams = reactive({
       }
     }
   }
-  //   470: { slidesPerView: 3 },
-  //   630: { slidesPerView: 4 },
-  //   768: { slidesPerView: 5 },
-  //   945: { slidesPerView: 6, spaceBetween: 5 },
-  //   1280: { slidesPerView: 7, spaceBetween: 20 }
-  // }
 })
+
+const { mediaDetails } = useMediaDetailsStore()
 </script>
 <!-- 50
 150 -->

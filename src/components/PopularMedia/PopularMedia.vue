@@ -23,7 +23,10 @@
           class="flex max-w-32 items-center justify-center lg:max-w-40"
         >
           <router-link to="/info-media" class="h-48 w-32 lg:h-60 lg:w-40">
-            <picture class="h-48 w-32 flex-shrink-0 cursor-pointer overflow-hidden lg:h-60 lg:w-40">
+            <picture
+              class="h-48 w-32 flex-shrink-0 cursor-pointer overflow-hidden lg:h-60 lg:w-40"
+              @click="mediaDetails(props.media, el.id)"
+            >
               <img
                 class="size-full rounded bg-slate-950 object-cover text-white"
                 :src="`https://image.tmdb.org/t/p/original/${el.poster_path}`"
@@ -39,6 +42,7 @@
 
 <script setup>
 import { usePopularMediaStore } from '@/stores/usePopularMedia'
+import { useMediaDetailsStore } from '@/stores/useMediaDetails'
 import { ref, reactive } from 'vue'
 
 const props = defineProps({
@@ -82,4 +86,6 @@ const swiperParams = reactive({
     momentum: true
   }
 })
+
+const { mediaDetails } = useMediaDetailsStore()
 </script>

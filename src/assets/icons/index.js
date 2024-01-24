@@ -6,5 +6,8 @@ export { default as ContactIcon } from './ContactIcon.vue'
 export { default as InfoIcon } from './InfoIcon.vue'
 export { default as PlayIcon } from './PlayIcon.vue'
 export { default as XIcon } from './XIcon.vue'
+export { default as CalendarIcon } from './CalendarIcon.vue'
+export { default as TimeIcon } from './TimeIcon.vue'
+export { default as SeasonsIcon } from './SeasonsIcon.vue'
 
 // export { default as  } from './.vue'

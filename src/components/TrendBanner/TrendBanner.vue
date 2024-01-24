@@ -5,7 +5,7 @@
       {{ trendInfo.title }}
       <template #buttons>
         <router-link to="/info-media">
-          <InfoButton />
+          <InfoButton @click="mediaDetails(trendInfo.mediaType, trendInfo.id)" />
         </router-link>
         <TrailerButton @click="toggleTrailer" />
       </template>
@@ -19,6 +19,7 @@
 <script setup>
 import { ImageBanner, InfoBox } from '@/components/TrendBanner'
 import { useTrendsMediaStore } from '@/stores/useTrendsMedia'
+import { useMediaDetailsStore } from '@/stores/useMediaDetails'
 import { InfoButton, TrailerButton } from '@/components/app'
 import { VideoTrailer } from '@/components/app'
 import { ref, reactive } from 'vue'
@@ -40,4 +41,6 @@ const trendInfo = reactive({
   mediaType: trend.media_type,
   id: trend.id
 })
+
+const { mediaDetails } = useMediaDetailsStore()
 </script>

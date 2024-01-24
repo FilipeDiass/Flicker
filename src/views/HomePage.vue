@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="m-auto mt-16 w-full max-w-7xl">
     <Suspense>
       <template #default>
         <TrendBanner />
