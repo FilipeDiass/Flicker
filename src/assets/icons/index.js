@@ -9,5 +9,7 @@ export { default as XIcon } from './XIcon.vue'
 export { default as CalendarIcon } from './CalendarIcon.vue'
 export { default as TimeIcon } from './TimeIcon.vue'
 export { default as SeasonsIcon } from './SeasonsIcon.vue'
+export { default as UserIcon } from './UserIcon.vue'
+export { default as ImageOffIcon } from './ImageOffIcon.vue'
 
 // export { default as  } from './.vue'

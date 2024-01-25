@@ -3,25 +3,29 @@
     <img
       :src="`https://image.tmdb.org/t/p/original/${media.backdrop_path}`"
       :alt="media.title || media.name"
-      class="absolute -z-10 flex h-44 w-full object-cover text-white"
+      class="absolute -z-10 flex h-44 w-full object-cover text-white min-[375px]:h-64 min-[540px]:h-96 min-[840px]:h-[500px] lg:h-[540px]"
     />
     <div
-      class="relative flex h-fit w-full flex-col before:absolute before:left-0 before:top-[168px] before:h-2 before:w-full before:bg-gradient-to-t before:from-slate-900"
+      class="relative flex h-fit w-full flex-col before:absolute before:left-0 before:top-[168px] before:h-2 before:w-full before:bg-gradient-to-t before:from-slate-900 min-[375px]:before:top-[248px] min-[540px]:before:top-[376px] md:flex-row md:items-center md:bg-black/50 min-[840px]:before:top-[492px] lg:before:top-[532px]"
     >
       <picture
-        class="flex h-44 w-fit items-center justify-center bg-gradient-to-r from-black/75 from-70% px-2.5"
+        class="flex h-44 w-fit items-center justify-center bg-gradient-to-r from-black/75 from-70% px-2.5 min-[375px]:h-64 min-[540px]:h-96 min-[840px]:h-[500px] lg:h-[540px]"
       >
         <img
           :src="`https://image.tmdb.org/t/p/original/${media.poster_path}`"
           :alt="media.title || media.name"
-          class="h-40 w-fit rounded object-cover shadow-md shadow-black"
+          class="mb-2 h-40 w-fit rounded object-cover shadow-md shadow-black min-[375px]:h-56 min-[540px]:h-80 min-[840px]:h-[400px]"
         />
       </picture>
-      <div class="my-2.5 flex h-fit w-full flex-col gap-2.5 px-2.5">
-        <h1 class="line-clamp-2 h-fit w-full font-primary text-xl text-white">
+      <div
+        class="my-2.5 flex h-fit w-full flex-col gap-2.5 px-2.5 md:h-80 md:w-auto md:flex-grow md:gap-5 min-[840px]:h-[400px]"
+      >
+        <h1 class="h-fit w-full font-primary text-2xl text-white md:text-3xl">
           {{ media.title || media.name }}
         </h1>
-        <div class="flex h-fit w-full flex-wrap items-center gap-5 font-secondary text-white">
+        <div
+          class="flex h-fit w-full flex-wrap items-center gap-5 font-secondary text-white min-[375px]:gap-10"
+        >
           <TrailerButton @click="toggleTrailer" />
           <button class="flex h-8 w-fit items-center justify-center gap-1.5">
             <TimeIcon v-if="media.runtime" class="size-7" />

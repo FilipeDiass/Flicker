@@ -24,14 +24,16 @@
         >
           <router-link to="/info-media" class="h-48 w-32 lg:h-60 lg:w-40">
             <picture
-              class="h-48 w-32 flex-shrink-0 cursor-pointer overflow-hidden lg:h-60 lg:w-40"
+              class="flex h-48 w-32 flex-shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded bg-slate-950 lg:h-60 lg:w-40"
               @click="mediaDetails(props.media, el.id)"
             >
               <img
-                class="size-full rounded bg-slate-950 object-cover text-white"
+                v-if="el.poster_path"
+                class="size-full rounded object-cover text-white"
                 :src="`https://image.tmdb.org/t/p/original/${el.poster_path}`"
                 :alt="el.title || el.name"
               />
+              <ImageOffIcon v-else class="size-20 stroke-slate-600" />
             </picture>
           </router-link>
         </swiper-slide>
@@ -43,6 +45,7 @@
 <script setup>
 import { usePopularMediaStore } from '@/stores/usePopularMedia'
 import { useMediaDetailsStore } from '@/stores/useMediaDetails'
+import { ImageOffIcon } from '@/assets/icons'
 import { ref, reactive } from 'vue'
 
 const props = defineProps({

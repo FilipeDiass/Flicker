@@ -8,7 +8,7 @@
     >
       <swiper-slide v-for="el in arrayMedia" :key="el.id" class="max-w-[830px] max-[425px]:w-fit">
         <div
-          class="flex size-full flex-col items-center gap-2.5 rounded bg-slate-950 p-2.5 shadow-md shadow-black max-[425px]:bg-transparent max-[425px]:p-0 max-[425px]:shadow-none min-[425px]:flex-row"
+          class="flex size-full flex-col items-center gap-2.5 rounded bg-slate-950 p-2.5 shadow-md shadow-black max-[425px]:bg-transparent max-[425px]:p-0 max-[425px]:shadow-none min-[425px]:flex-row min-[850px]:h-64"
         >
           <ImagePoster :poster="{ poster: el.poster_path }" />
           <div

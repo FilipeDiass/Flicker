@@ -1,22 +1,23 @@
 <template>
   <div class="my-5 flex h-fit w-full flex-col gap-2 overflow-hidden px-2.5 xl:p-0">
-    <h1 class="font-primary text-2xl text-white">Elenco</h1>
+    <h1 class="font-primary text-2xl text-white md:text-3xl">Cast</h1>
     <swiper-container class="flex size-full" v-bind="swiperParams">
       <swiper-slide v-for="obj in arrayCast" :key="obj.id" class="max-w-28">
-        <div class="h-72 w-32 overflow-hidden rounded">
-          <picture class="block h-3/4 max-h-48 w-full bg-slate-950">
+        <div class="h-72 w-32 overflow-hidden rounded md:h-80 md:w-40">
+          <picture class="flex h-[70%] w-full items-center justify-center bg-slate-950">
             <img
               v-if="obj.profile_path"
               :src="`https://image.tmdb.org/t/p/original/${obj.profile_path}`"
               :alt="obj.original_name || obj.name"
               class="size-full object-cover font-primary text-white"
             />
+            <UserIcon v-else class="size-20 stroke-slate-600" />
           </picture>
-          <div class="flex h-2/4 w-full flex-col bg-white px-2.5 font-primary">
-            <p class="line-clamp-2 h-fit max-h-12 w-full">
+          <div class="flex h-[30%] w-full flex-col justify-center bg-white px-2.5 font-primary">
+            <p class="line-clamp-2 h-fit w-full md:text-lg">
               {{ obj.original_name || obj.name }}
             </p>
-            <span class="text line-clamp-2 h-fit max-h-11 w-full font-secondary text-gray-500">
+            <span class="line-clamp-2 h-fit w-full font-secondary text-sm text-gray-500">
               {{ obj.character }}
             </span>
           </div>
@@ -29,6 +30,7 @@
 <script setup>
 import { useMediaCastStore } from '@/stores/useMediaCast'
 import { ref, reactive } from 'vue'
+import { UserIcon } from '@/assets/icons'
 
 const props = defineProps({
   infoMedia: {
@@ -52,6 +54,11 @@ const swiperParams = reactive({
     sticky: true,
     minimumVelocity: 0.02,
     momentum: true
+  },
+  breakpoints: {
+    768: {
+      spaceBetween: 70
+    }
   }
 })
 </script>
