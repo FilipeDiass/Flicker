@@ -44,7 +44,6 @@ const store = useMediaCastStore()
 await store.mediaCast(type, media.id)
 const arrayCast = ref(store.cast)
 
-console.log(store.cast)
 const swiperParams = reactive({
   slidesPerView: 'auto',
   spaceBetween: 30,

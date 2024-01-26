@@ -18,8 +18,14 @@
 </template>
 
 <script setup>
+import { onUnmounted } from 'vue'
 import { useMediaDetailsStore } from '@/stores/useMediaDetails'
 import { InitialInfo, OtherInformation, MediaCast, LoadingInfoMedia } from '@/components/InfoMedia'
 
+window.scrollTo(0, 0)
 const store = useMediaDetailsStore()
+
+onUnmounted(() => {
+  store.media = null
+})
 </script>
