@@ -54,6 +54,8 @@ import { MediaPoster, LoadingMediaPoster } from '@/components/MediaPoster'
 import { TrendBanner, LoadingTrend } from '@/components/TrendBanner'
 import { PopularMedia, LoadingPopularMedia } from '@/components/PopularMedia'
 import { TopTrendsBox } from '@/components/TopTrends'
+
+sessionStorage.clear()
 </script>
 
 <style></style>

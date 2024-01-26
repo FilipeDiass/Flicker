@@ -18,6 +18,11 @@ const router = createRouter({
       path: '/info-media',
       name: 'info-media',
       component: () => import('@/views/InfoMedia.vue')
+    },
+    {
+      path: '/searchMedia',
+      name: 'searchMedia',
+      component: () => import('@/views/searchedMedia.vue')
     }
   ]
 })

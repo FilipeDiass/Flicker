@@ -18,13 +18,29 @@
 </template>
 
 <script setup>
-import { onUnmounted } from 'vue'
+import { onMounted, onUnmounted, watch } from 'vue'
 import { useMediaDetailsStore } from '@/stores/useMediaDetails'
 import { InitialInfo, OtherInformation, MediaCast, LoadingInfoMedia } from '@/components/InfoMedia'
 
 window.scrollTo(0, 0)
 const store = useMediaDetailsStore()
 
+watch(
+  () => store.media,
+  (value) => {
+    if (value) {
+      sessionStorage.setItem('mediaId', store.media.id)
+      sessionStorage.setItem('mediaType', store.mediaType)
+    }
+  }
+)
+onMounted(async () => {
+  if (!store.media) {
+    const mediaId = sessionStorage.getItem('mediaId')
+    const mediaType = sessionStorage.getItem('mediaType')
+    await store.mediaDetails(mediaType, mediaId)
+  }
+})
 onUnmounted(() => {
   store.media = null
 })

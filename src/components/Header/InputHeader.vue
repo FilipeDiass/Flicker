@@ -8,11 +8,16 @@
     >
       <input
         ref="input"
+        v-model="textInput"
         type="text"
         placeholder="Pesquise"
         class="h-full w-full px-2.5 font-secondary outline-none lg:bg-transparent lg:text-white"
+        @keyup.enter="searchMedia"
       />
-      <button class="flex h-full w-10 items-center justify-center bg-white lg:bg-transparent">
+      <button
+        class="flex h-full w-10 items-center justify-center bg-white lg:bg-transparent"
+        @click="searchMedia"
+      >
         <SearchIcon class="size-7 stroke-gray-400 lg:size-6" />
       </button>
     </div>
@@ -21,7 +26,9 @@
 
 <script setup>
 import { useToggleStore } from '@/stores/useToggle'
+import { useSearchStore } from '@/stores/useSearch'
 import { SearchIcon } from '@/assets/icons'
+import { useRouter } from 'vue-router'
 import { ref, watch } from 'vue'
 
 const { menu } = useToggleStore()
@@ -33,6 +40,19 @@ watch(
     if (menu.search) input.value.focus()
   }
 )
+
+const textInput = ref('')
+const { search } = useSearchStore()
+
+const router = useRouter()
+const searchMedia = async () => {
+  await search(textInput.value)
+
+  textInput.value = ''
+  input.value.blur()
+
+  router.push('/searchMedia')
+}
 </script>
 
 <style scoped>
