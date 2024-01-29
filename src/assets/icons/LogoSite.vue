@@ -1,5 +1,5 @@
 <template>
-  <a href="http://localhost:5173/">
+  <a href="" @click="reloadPage">
     <svg
       width="104"
       height="24"
@@ -21,3 +21,9 @@
     </svg>
   </a>
 </template>
+
+<script setup>
+function reloadPage() {
+  window.location.reload()
+}
+</script>

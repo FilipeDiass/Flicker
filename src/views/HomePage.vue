@@ -55,7 +55,7 @@ import { TrendBanner, LoadingTrend } from '@/components/TrendBanner'
 import { PopularMedia, LoadingPopularMedia } from '@/components/PopularMedia'
 import { TopTrendsBox } from '@/components/TopTrends'
 
-sessionStorage.clear()
+localStorage.clear()
 </script>
 
 <style></style>

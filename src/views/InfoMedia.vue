@@ -29,15 +29,15 @@ watch(
   () => store.media,
   (value) => {
     if (value) {
-      sessionStorage.setItem('mediaId', store.media.id)
-      sessionStorage.setItem('mediaType', store.mediaType)
+      localStorage.setItem('mediaId', store.media.id)
+      localStorage.setItem('mediaType', store.mediaType)
     }
   }
 )
 onMounted(async () => {
   if (!store.media) {
-    const mediaId = sessionStorage.getItem('mediaId')
-    const mediaType = sessionStorage.getItem('mediaType')
+    const mediaId = localStorage.getItem('mediaId')
+    const mediaType = localStorage.getItem('mediaType')
     await store.mediaDetails(mediaType, mediaId)
   }
 })
