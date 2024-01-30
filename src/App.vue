@@ -4,18 +4,17 @@
       <NavBar>
         <ItemMenu to="/"> <HomeIcon class="size-7 md:hidden" /> Home </ItemMenu>
         <ItemMenu to="/about"> <WindowIcon class="size-7 md:hidden" /> About The Project </ItemMenu>
-        <ItemMenu> <ContactIcon class="size-7 md:hidden" /> Contact </ItemMenu>
       </NavBar>
     </HeaderBox>
   </header>
 
-  <router-view />
+  <router-view class="min-h-[calc(100dvh-161.6px)]" />
 
   <FooterBox />
 </template>
 
 <script setup>
-import { HomeIcon, WindowIcon, ContactIcon } from './assets/icons'
+import { HomeIcon, WindowIcon } from './assets/icons'
 import { HeaderBox, NavBar, ItemMenu } from './components/Header'
 import { FooterBox } from '@/components/Footer'
 </script>

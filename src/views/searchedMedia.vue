@@ -49,6 +49,8 @@ import { OtherMedia, NotFound } from '@/components/OtherMedia'
 import { useSearchStore } from '@/stores/useSearch'
 import { storeToRefs } from 'pinia'
 
+window.scrollTo(0, 0)
+
 const store = useSearchStore()
 const { searchResult } = storeToRefs(store)
 

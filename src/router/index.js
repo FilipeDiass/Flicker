@@ -12,7 +12,7 @@ const router = createRouter({
     {
       path: '/about',
       name: 'about',
-      component: () => import('@/views/aboutTeste.vue')
+      component: () => import('@/views/AboutPage.vue')
     },
     {
       path: '/info-media',

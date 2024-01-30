@@ -31,7 +31,7 @@ import { SearchIcon } from '@/assets/icons'
 import { useRouter } from 'vue-router'
 import { ref, watch } from 'vue'
 
-const { menu } = useToggleStore()
+const { menu, toggleMenu } = useToggleStore()
 
 const input = ref(null)
 watch(
@@ -49,6 +49,7 @@ const searchMedia = async () => {
   await search(textInput.value)
 
   textInput.value = ''
+  toggleMenu()
   input.value.blur()
 
   router.push('/searchMedia')
