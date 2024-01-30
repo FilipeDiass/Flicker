@@ -9,7 +9,7 @@
     </p>
     <div class="flex h-fit w-full flex-wrap items-center gap-5">
       <p class="font-primary text-xl">Know More:</p>
-      <a href="https://www.themoviedb.org/">
+      <a href="https://www.themoviedb.org/" target="_blank">
         <img src="/TheMovieDB.svg" alt="Logo TheMovieDB" class="h-5 object-cover" />
       </a>
     </div>
