@@ -1,6 +1,13 @@
 <template>
   <div class="relative h-fit w-full">
+    <div
+      v-if="!media.backdrop_path"
+      class="absolute -z-10 flex h-44 w-full items-center justify-center bg-slate-800 text-white min-[375px]:h-64 min-[540px]:h-96 min-[840px]:h-[500px] lg:h-[540px]"
+    >
+      <ImageOffIcon class="size-20 stroke-slate-500" />
+    </div>
     <img
+      v-else
       :src="`https://image.tmdb.org/t/p/original/${media.backdrop_path}`"
       :alt="media.title || media.name"
       class="absolute -z-10 flex h-44 w-full object-cover text-white min-[375px]:h-64 min-[540px]:h-96 min-[840px]:h-[500px] lg:h-[540px]"
@@ -11,7 +18,14 @@
       <picture
         class="flex h-44 w-fit items-center justify-center bg-gradient-to-r from-black/75 from-70% px-2.5 min-[375px]:h-64 min-[540px]:h-96 min-[840px]:h-[500px] lg:h-[540px]"
       >
+        <div
+          v-if="!media.poster_path"
+          class="mb-2 flex h-40 w-28 items-center justify-center rounded bg-slate-700 object-cover shadow-md shadow-black min-[375px]:h-56 min-[375px]:w-36 min-[540px]:h-80 min-[540px]:w-52 min-[840px]:h-[400px] min-[840px]:w-64"
+        >
+          <ImageOffIcon class="size-20 stroke-slate-500" />
+        </div>
         <img
+          v-else
           :src="`https://image.tmdb.org/t/p/original/${media.poster_path}`"
           :alt="media.title || media.name"
           class="mb-2 h-40 w-fit rounded object-cover shadow-md shadow-black min-[375px]:h-56 min-[540px]:h-80 min-[840px]:h-[400px]"
@@ -50,7 +64,7 @@
 </template>
 
 <script setup>
-import { TimeIcon, CalendarIcon, SeasonsIcon } from '@/assets/icons'
+import { TimeIcon, CalendarIcon, SeasonsIcon, ImageOffIcon } from '@/assets/icons'
 import { TrailerButton, VideoTrailer } from '../app'
 import { ref } from 'vue'
 
